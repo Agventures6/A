@@ -122,13 +122,9 @@ flutter:
     - assets/healthyapple.jpg
     - assets/Apple-pest_lep_RBLR-190306-008-768x520.jpg
     - assets/aphids.jpg
-    - assets/altenarialeaf.jpg
     - assets/brownstring.jpg
     - assets/caterpiller.jpg
     - assets/coldingmoth.jpg
-    - assets/sootyblotch.jpg
-    - assets/whiterot.jpg
-    - assets/antharacnose.jpg
     - assets/farmer.jpg
     - assets/avatar.png
     - assets/apples.png
@@ -144,7 +140,41 @@ flutter:
     - assets/product2.jpg
     - assets/product3.jpg
 
+    #pd assets
+    - assets/pd_assets/seedling_stage/Picture1.png
+    - assets/pd_assets/seedling_stage/Picture2.png
+    - assets/pd_assets/seedling_stage/Picture3.png
+    - assets/pd_assets/seedling_stage/Picture4.png
+    - assets/pd_assets/seedling_stage/Picture5.png
+    - assets/pd_assets/seedling_stage/Picture6.png
+    - assets/pd_assets/seedling_stage/Picture7.png
 
+    - assets/pd_assets/vegetative_stage/Picture1.jpg
+    - assets/pd_assets/vegetative_stage/Picture2.jpg
+    - assets/pd_assets/vegetative_stage/Picture3.jpg
+    - assets/pd_assets/vegetative_stage/Picture4.jpg
+    - assets/pd_assets/vegetative_stage/Picture5.jpg
+    - assets/pd_assets/vegetative_stage/Picture6.jpg
+
+    - assets/pd_assets/flowering_stage/Picture1.jpg
+    - assets/pd_assets/flowering_stage/Picture2.jpg
+    - assets/pd_assets/flowering_stage/Picture3.jpg
+    - assets/pd_assets/flowering_stage/Picture4.jpg
+    - assets/pd_assets/flowering_stage/Picture5.jpg
+
+    - assets/pd_assets/fruiting_stage/Picture1.jpg
+    - assets/pd_assets/fruiting_stage/Picture2.jpg
+    - assets/pd_assets/fruiting_stage/Picture3.jpg
+    - assets/pd_assets/fruiting_stage/Picture4.jpg
+    - assets/pd_assets/fruiting_stage/Picture5.jpg
+    - assets/pd_assets/fruiting_stage/Picture6.jpg
+
+    - assets/pd_assets/harvesting_stage/Picture1.jpg
+    - assets/pd_assets/harvesting_stage/Picture2.jpg
+    - assets/pd_assets/harvesting_stage/Picture3.jpg
+    - assets/pd_assets/harvesting_stage/Picture4.jpg
+    - assets/pd_assets/harvesting_stage/Picture5.jpg
+    - assets/pd_assets/harvesting_stage/Picture6.jpg
 
 flutter_icons:
   android: true

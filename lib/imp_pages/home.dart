@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'camera_page.dart';
-import 'drone_view_page.dart';
-import 'store_page.dart';
-import 'profile_page.dart';
-import 'treehealth.dart';
-import 'fertilizer.dart';
-import 'financial_overview_screen.dart';
-import 'pest.dart';
+import '../camera_page.dart';
+import '../drone_view_page.dart';
+import '../store_page.dart';
+import '../profile_page.dart';
+import '../treehealth.dart';
+import '../fertilizer.dart';
+import '../financial_overview_screen.dart';
+import '../pd_pages/pd.dart';
+import '../drawer_pages/drawer.dart';
+import '../widgets/card.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -77,7 +79,7 @@ class _HomepageState extends State<Homepage> {
         backgroundColor: Colors.green,
         centerTitle: true,
       ),
-      drawer: const Drawer(),
+      drawer: const MyDrawer(),
       body: Column(
         children: [
           Container(
@@ -120,11 +122,27 @@ class _HomepageState extends State<Homepage> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
-                      children: [
-                        buildCard('DRONE VIEW', 'assets/1693624144827.jpeg.jpg', context, const DroneViewPage()),
-                        buildCard('Pest and Diseases', 'assets/Apple-pest_lep_RBLR-190306-008-768x520.jpg', context, const PestPage()),
-                        buildCard('Fertilizers', 'assets/Bild1.jpg', context, const FertilizerPage(title: 'Fertilizers')),
-                        buildCard('Profit Estimate', 'assets/Screenshot 2024-08-29 112645.png', context, const FinancialOverviewScreen()),
+                      children: const[
+                        CustomCard(
+                          title: 'DRONE VIEW',
+                          imagePath: 'assets/1693624144827.jpeg.jpg',
+                          destinationPage: DroneViewPage(),
+                        ),
+                        CustomCard(
+                          title: 'Pest and Diseases',
+                          imagePath: 'assets/Apple-pest_lep_RBLR-190306-008-768x520.jpg',
+                          destinationPage: PestPage(),
+                        ),
+                        CustomCard(
+                          title: 'Fertilizers',
+                          imagePath: 'assets/Bild1.jpg',
+                          destinationPage: FertilizerPage(title: 'Fertilizers'),
+                        ),
+                        CustomCard(
+                          title: 'Profit Estimate',
+                          imagePath: 'assets/Screenshot 2024-08-29 112645.png',
+                          destinationPage: FinancialOverviewScreen(),
+                        ),
                       ],
                     ),
                   ),
@@ -229,52 +247,6 @@ class _HomepageState extends State<Homepage> {
         unselectedItemColor: Colors.white,
         backgroundColor: Colors.green,
         onTap: _onItemTapped,
-      ),
-    );
-  }
-
-  Widget buildCard(String title, String imagePath, BuildContext context, Widget destinationPage) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => destinationPage,
-          ),
-        );
-      },
-      child: Card(
-        color: Colors.teal.shade100,
-        elevation: 4.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0)),
-                  image: DecorationImage(
-                    image: AssetImage(imagePath),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

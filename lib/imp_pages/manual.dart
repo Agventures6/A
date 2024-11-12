@@ -29,6 +29,7 @@ class ManualPage extends StatelessWidget {
           children: [
             ElevatedButton(
               style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
                 backgroundColor: Colors.green[700],
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 textStyle: const TextStyle(fontSize: 18),
@@ -39,6 +40,7 @@ class ManualPage extends StatelessWidget {
             const SizedBox(height: 15),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
                 backgroundColor: Colors.green[700],
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 textStyle: const TextStyle(fontSize: 18),
@@ -49,6 +51,7 @@ class ManualPage extends StatelessWidget {
             const SizedBox(height: 15),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
                 backgroundColor: Colors.green[700],
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 textStyle: const TextStyle(fontSize: 18),
@@ -59,6 +62,7 @@ class ManualPage extends StatelessWidget {
             const SizedBox(height: 15),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
                 backgroundColor: Colors.green[700],
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 textStyle: const TextStyle(fontSize: 18),
@@ -69,6 +73,7 @@ class ManualPage extends StatelessWidget {
             const SizedBox(height: 15),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
                 backgroundColor: Colors.green[700],
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 textStyle: const TextStyle(fontSize: 18),

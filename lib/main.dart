@@ -2,10 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
-import 'intro.dart';
-import 'login.dart'; 
-import 'signup.dart';
-import 'home.dart';
+import 'imp_pages/intro.dart';
+import 'imp_pages/login.dart'; 
+import 'imp_pages/signup.dart';
+import 'imp_pages/home.dart';
 import 'drone_view_page.dart';
 import 'camera_page.dart';
 

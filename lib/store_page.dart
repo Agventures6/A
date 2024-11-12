@@ -141,7 +141,6 @@ class _StorePageState extends State<StorePage> {
                     .toList(),
                 onChanged: (value) {
                   // Handle category selection here
-                  print('Selected category: $value');
                 },
               ),
             ),

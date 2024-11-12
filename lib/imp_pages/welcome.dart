@@ -8,8 +8,10 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('AGventures'),
+        centerTitle: true,
         backgroundColor: Colors.green[700],
         actions: [
           TextButton(
@@ -32,18 +34,10 @@ class WelcomePage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
               'Welcome to AGventures !!',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const Text(
-              'XX YY ZZZZ',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -68,6 +62,12 @@ class WelcomePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.green[700],
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
               onPressed: () {
                 Navigator.push(
                   context,

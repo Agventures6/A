@@ -12,6 +12,15 @@ class FertilizerPage extends StatefulWidget {
 class _FertilizerPageState extends State<FertilizerPage> {
   int _treeCount = 2;
 
+  // Base fertilizer requirements for 1 tree (values are examples, adjust as needed)
+  final double _baseMop = 1.3;
+  final double _baseTsp = 0.87;
+  final double _baseUrea = 1.7;
+
+  double _mopRequired = 0.0;
+  double _tspRequired = 0.0;
+  double _ureaRequired = 0.0;
+
   void _incrementTreeCount() {
     setState(() {
       _treeCount++;
@@ -26,11 +35,21 @@ class _FertilizerPageState extends State<FertilizerPage> {
     });
   }
 
+  void _calculateFertilizer() {
+    setState(() {
+      _mopRequired = _baseMop * _treeCount;
+      _tspRequired = _baseTsp * _treeCount;
+      _ureaRequired = _baseUrea * _treeCount;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
+        backgroundColor: Colors.green,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -51,10 +70,7 @@ class _FertilizerPageState extends State<FertilizerPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Fertilizer'),
-            ),
+            const Text('Fertilizer'),
             const SizedBox(height: 16.0),
             Table(
               border: TableBorder.all(),
@@ -74,10 +90,7 @@ class _FertilizerPageState extends State<FertilizerPage> {
               ],
             ),
             const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Fertilizer Calculator'),
-            ),
+            const Text('Fertilizer Calculator'),
             const SizedBox(height: 16.0),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -87,30 +100,41 @@ class _FertilizerPageState extends State<FertilizerPage> {
               ),
               child: Column(
                 children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      '$_treeCount\nTrees',
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+                  const Text("Number of trees"),
                   const SizedBox(height: 16.0),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
                         onPressed: _decrementTreeCount,
                         icon: const Icon(Icons.remove),
                       ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Calculate'),
+                      Container(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24.0),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              '$_treeCount',
+                              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                            ),
+                            const Text('Trees', style: TextStyle(fontSize: 12)),
+                          ],
+                        ),
                       ),
                       IconButton(
                         onPressed: _incrementTreeCount,
                         icon: const Icon(Icons.add),
                       ),
                     ],
+                  ),
+                  const SizedBox(height: 16.0),
+                  ElevatedButton(
+                    onPressed: _calculateFertilizer,
+                    child: const Text('Calculate'),
                   ),
                 ],
               ),
@@ -124,25 +148,25 @@ class _FertilizerPageState extends State<FertilizerPage> {
               ),
               child: Column(
                 children: [
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Column(
                         children: [
-                          Text('DAP', style: TextStyle(fontWeight: FontWeight.bold)),
-                          Text('870g'),
+                          const Text('MOP', style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text('${_mopRequired.toStringAsFixed(1)} kg'),
                         ],
                       ),
                       Column(
                         children: [
-                          Text('Urea', style: TextStyle(fontWeight: FontWeight.bold)),
-                          Text('1.4 kg'),
+                          const Text('TSP', style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text('${_tspRequired.toStringAsFixed(1)} kg'),
                         ],
                       ),
                       Column(
                         children: [
-                          Text('MOP', style: TextStyle(fontWeight: FontWeight.bold)),
-                          Text('1.3 kg'),
+                          const Text('Urea', style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text('${_ureaRequired.toStringAsFixed(1)} kg'),
                         ],
                       ),
                     ],
