@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import '../camera_page.dart';
+import '../drawer_pages/drawer.dart';
 import '../drone_view_page.dart';
-import '../store_page.dart';
-import '../profile_page.dart';
-import '../treehealth.dart';
 import '../fertilizer.dart';
 import '../financial_overview_screen.dart';
 import '../pd_pages/pd.dart';
-import '../drawer_pages/drawer.dart';
+import '../profile_page.dart';
+import '../store_page.dart';
+import '../treehealth.dart';
 import '../widgets/card.dart';
+import '../widgets/weather.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
   _HomepageState createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomepageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -25,10 +26,10 @@ class _HomepageState extends State<Homepage> {
       _selectedIndex = index;
       switch (index) {
         case 0:
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const Homepage(),
+              builder: (context) => const HomePage(),
             ),
           );
           break;
@@ -68,7 +69,7 @@ class _HomepageState extends State<Homepage> {
               );
             },
             child: const Padding(
-              padding: EdgeInsets.only(right: 20.0), // Added padding
+              padding: EdgeInsets.only(right: 20.0),
               child: CircleAvatar(
                 radius: 15,
                 backgroundImage: AssetImage('assets/avatar.png'),
@@ -147,77 +148,9 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-                          decoration: BoxDecoration(
-                            color: Colors.teal.shade100,
-                            borderRadius: BorderRadius.circular(12.0),
-                            border: Border.all(color: Colors.teal.shade600, width: 2.0),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Weather',
-                                style: TextStyle(
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.teal.shade700,
-                                ),
-                              ),
-                              const SizedBox(height: 15),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Location: Dindigul',
-                                        style: TextStyle(
-                                          fontSize: 14.0,
-                                          color: Colors.teal.shade800,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Text(
-                                        'Temperature: 25°C',
-                                        style: TextStyle(
-                                          fontSize: 14.0,
-                                          color: Colors.teal.shade800,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Humidity: 60%',
-                                        style: TextStyle(
-                                          fontSize: 14.0,
-                                          color: Colors.teal.shade800,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Text(
-                                        'Wind Speed: 10 km/hr',
-                                        style: TextStyle(
-                                          fontSize: 14.0,
-                                          color: Colors.teal.shade800,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                  const Row(
+                    children: [              
+                      WeatherWidget(),
                     ],
                   ),
                   const SizedBox(height: 20),

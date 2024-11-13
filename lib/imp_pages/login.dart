@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'signup.dart';
 import 'home.dart';
+import 'signup.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -147,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                           await saveUserData(user);
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const Homepage()),
+                            MaterialPageRoute(builder: (context) => const HomePage()),
                           );
                         }
                       } catch (e) {
@@ -190,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                           "Sign Up",
                           style: TextStyle(
                             fontSize: 16.0,
-                            color: Color.fromRGBO(38, 0, 255, 1),
+                            color: Color.fromARGB(255, 13, 117, 15),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -211,15 +211,16 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const Homepage()),
+                        MaterialPageRoute(builder: (context) => const HomePage()),
                       );
                     },
                     child: const Text(
                       'Continue without Sign In',
                       style: TextStyle(
-                        color: Color.fromRGBO(38, 0, 255, 1), // Adjusted color for better contrast
+                        color: Color.fromARGB(255, 13, 117, 15), // Adjusted color for better contrast
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
                       ),
                     ),
                   ),

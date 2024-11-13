@@ -25,7 +25,7 @@ class CustomCard extends StatelessWidget {
       },
       child: Container(
         width: 150, // Set a fixed width
-        height: 120, // Set a fixed height
+        height: 150, // Set a fixed height
         margin: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Card(
           color: Colors.teal.shade100,

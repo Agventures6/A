@@ -96,7 +96,7 @@ class _PestPageState extends State<PestPage> {
           if (index == 0) {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const Homepage()), // Navigate to Homepage
+              MaterialPageRoute(builder: (context) => const HomePage()), // Navigate to Homepage
             );
           }
         },
