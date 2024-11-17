@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'cart.dart';
+import 'cart_page.dart';
+import 'widgets/nav_bar.dart';
 
 class StorePage extends StatefulWidget {
   const StorePage({super.key});
@@ -220,6 +221,7 @@ class _StorePageState extends State<StorePage> {
           ],
         ),
       ),
+      bottomNavigationBar: const CustomBottomNavBar(currentIndex: 2,),
     );
   }
 

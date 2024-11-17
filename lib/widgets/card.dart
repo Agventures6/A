@@ -38,6 +38,7 @@ class CustomCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Container(
+                  height: 140,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0)),
                     image: DecorationImage(

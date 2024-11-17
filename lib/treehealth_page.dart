@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'store_page.dart';
+import 'widgets/nav_bar.dart';
 
 class TreeHealthPage extends StatelessWidget {
   const TreeHealthPage({super.key});
@@ -277,7 +277,8 @@ class TreeHealthPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: const CustomBottomNavBar(currentIndex: 1,)
+      /*BottomNavigationBar(
         backgroundColor: Colors.green,
         items: const [
           BottomNavigationBarItem(
@@ -325,7 +326,7 @@ class TreeHealthPage extends StatelessWidget {
               break;
           }
         },
-      ),
+      ),*/
     );
   }
 }

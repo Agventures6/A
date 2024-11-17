@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../imp_pages/home.dart';
-import 'diseases.dart';
-import 'pest.dart';
+import '../imp_pages/home_page.dart';
+import 'diseases_page.dart';
+import 'pest_page.dart';
 
 class PestPage extends StatefulWidget {
   const PestPage({super.key});

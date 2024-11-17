@@ -2,14 +2,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'firebase_options.dart';
-import 'imp_pages/home.dart';
-import 'imp_pages/intro.dart';
-import 'imp_pages/login.dart'; 
-import 'imp_pages/signup.dart';
+import 'services/firebase_options.dart';
+import 'imp_pages/home_page.dart';
+import 'imp_pages/intro_page.dart';
+import 'imp_pages/login_page.dart'; 
+import 'imp_pages/signup_page.dart';
 import 'drone_view_page.dart';
 import 'camera_page.dart';
 import 'services/weather.dart';
+import 'store_page.dart';
+import 'treehealth_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,13 +24,13 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => WeatherProvider()),
       ],
-      child: const Agventure()
+      child: const Agventures()
     )
   );
 }
 
-class Agventure extends StatelessWidget {
-  const Agventure({super.key});
+class Agventures extends StatelessWidget {
+  const Agventures({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +51,12 @@ class Agventure extends StatelessWidget {
           initialRoute: isLoggedIn ? '/home' : '/',
           routes: {
             '/': (context) => const IntroPage(),
+            '/home': (context) => const HomePage(),
+            '/tree': (context) => const TreeHealthPage(),
+            '/store': (context) => const StorePage(),
+            
             '/login': (context) => const LoginPage(),
             '/signup': (context) => const SignUpPage(),
-            '/home': (context) => const HomePage(),
             '/drone': (context) => const DroneViewPage(),
             '/camera': (context) => const CameraPage(),
           },

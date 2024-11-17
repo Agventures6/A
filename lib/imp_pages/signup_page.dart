@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'login.dart';
+import '../widgets/text_field.dart';
+import 'login_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -18,23 +19,26 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController confirmPasswordController = TextEditingController();
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance; // Firestore instance
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    
+
     return Scaffold(
-      body: SingleChildScrollView(  // Added SingleChildScrollView to prevent overflow
+      body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
             minHeight: screenHeight,
           ),
           child: Container(
-            height: MediaQuery.of(context).size.height,
+            height: screenHeight,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.green[700]!, Colors.green[300]!], // Agriculture theme colors
+                colors: [Colors.green[700]!, Colors.green[300]!],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -54,7 +58,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           DropdownButton<String>(
                             value: 'English',
                             icon: const Icon(Icons.arrow_drop_down),
-                            items: <String>[ 'English', 'Tamil', 'Hindi', 'Urdu', 'Kashmiri'].map((String value) {
+                            items: <String>['English', 'Tamil', 'Hindi', 'Urdu', 'Kashmiri'].map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Row(
@@ -81,19 +85,58 @@ class _SignUpPageState extends State<SignUpPage> {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 30),
-                      _buildTextField('Enter your mobile Number', controller: phoneController),
+                      CustomTextField(
+                        controller: phoneController,
+                        labelText: 'Enter your mobile Number',
+                      ),
                       const SizedBox(height: 20),
-                      _buildTextField('Name', controller: nameController),
+                      CustomTextField(
+                        controller: nameController,
+                        labelText: 'Name',
+                      ),
                       const SizedBox(height: 20),
-                      _buildTextField('Enter your Email', controller: emailController),
+                      CustomTextField(
+                        controller: emailController,
+                        labelText: 'Enter your Email',
+                      ),
                       const SizedBox(height: 20),
-                      _buildTextField('Enter the password', controller: passwordController, obscureText: true),
+                      CustomTextField(
+                        controller: passwordController,
+                        labelText: 'Enter the password',
+                        isObscure: _obscurePassword,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _obscurePassword = !_obscurePassword;
+                            });
+                          },
+                        ),
+                      ),
                       const SizedBox(height: 20),
-                      _buildTextField('Re-Enter your password', controller: confirmPasswordController, obscureText: true),
+                      CustomTextField(
+                        controller: confirmPasswordController,
+                        labelText: 'Re-Enter your password',
+                        isObscure: _obscureConfirmPassword,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _obscureConfirmPassword = !_obscureConfirmPassword;
+                            });
+                          },
+                        ),
+                      ),
                       const SizedBox(height: 30),
                       ElevatedButton(
                         onPressed: () async {
-                          // Validation for empty fields
+                          // Validation and Firebase authentication logic
                           if (phoneController.text.isEmpty ||
                               nameController.text.isEmpty ||
                               emailController.text.isEmpty ||
@@ -104,29 +147,27 @@ class _SignUpPageState extends State<SignUpPage> {
                             );
                             return;
                           }
-          
+
                           if (passwordController.text != confirmPasswordController.text) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Passwords do not match')),
                             );
                             return;
                           }
-          
+
                           try {
-                            // Create user with Firebase Authentication
                             UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
                               email: emailController.text,
                               password: passwordController.text,
                             );
-          
-                            // Store user details in Firestore
+
                             await _firestore.collection('users').doc(userCredential.user?.uid).set({
                               'name': nameController.text,
                               'email': emailController.text,
                               'phone': phoneController.text,
                               'uid': userCredential.user?.uid,
                             });
-          
+
                             if (mounted) {
                               Navigator.push(
                                 context,
@@ -177,38 +218,19 @@ class _SignUpPageState extends State<SignUpPage> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 16.0,
-                                color: Color.fromRGBO(38, 0, 255, 1),
+                                color: Color.fromARGB(255, 13, 117, 15),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTextField(String T, {bool obscureText = false, required TextEditingController controller}) {
-    return TextField(
-      controller: controller,
-      obscureText: obscureText,
-      style: const TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        labelText: T,
-        labelStyle: const TextStyle(color: Colors.white),
-        border: const OutlineInputBorder(),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
         ),
       ),
     );

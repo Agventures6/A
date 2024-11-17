@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'welcome.dart';
+import 'welcome_page.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -39,7 +39,7 @@ class IntroPage extends StatelessWidget {
                 const SizedBox(height: 20), // Spacing between logo and button
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
+                    Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => const WelcomePage()),
                     );
                   },
@@ -68,6 +68,6 @@ class IntroPage extends StatelessWidget {
   }
 }
 
-void main() => runApp(const MaterialApp(
+/*void main() => runApp(const MaterialApp(
   home: IntroPage(),
-));
+));*/

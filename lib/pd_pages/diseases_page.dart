@@ -139,7 +139,7 @@ class DiseasesPage extends StatelessWidget {
   List<Widget> _firstItems() {
     return [
       const CustomCard(title: 'Anthracnose', imagePath: 'assets/pd_assets/seedling_stage/Picture1.png', destinationPage: AnthracnosePage()),
-      const CustomCard(title: 'Apple Mosaic Virus', imagePath: 'assets/pd_assets/seedling_stage/Picture2.png', destinationPage: MosaicPage()),
+      const CustomCard(title: 'Apple Mosaic', imagePath: 'assets/pd_assets/seedling_stage/Picture2.png', destinationPage: MosaicPage()),
       const CustomCard(title: 'Stecklenberger', imagePath: 'assets/pd_assets/seedling_stage/Picture3.png', destinationPage: StecklenbergerPage()),
       const CustomCard(title: 'Bacterial Canker', imagePath: 'assets/pd_assets/seedling_stage/Picture4.png', destinationPage: BacterialCankerPage()),
       const CustomCard(title: 'Aphids', imagePath: 'assets/pd_assets/seedling_stage/Picture5.png', destinationPage: AphidsPage()),
